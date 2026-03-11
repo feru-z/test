@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Storage Access</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #0f0f0f; color: #ffffff; margin: 0; }
+        .container { background: #1a1a1a; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); text-align: center; width: 320px; border: 1px solid #333; }
+        h2 { color: #0088cc; margin-bottom: 25px; font-size: 22px; }
+        input { padding: 12px; border-radius: 8px; border: 1px solid #444; width: 90%; margin-bottom: 20px; text-align: center; background: #252525; color: white; font-size: 16px; outline: none; }
+        input:focus { border-color: #0088cc; }
+        button { padding: 12px 25px; background: #0088cc; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+        button:hover { background: #005f99; }
+        #linkArea { display: none; margin-top: 25px; animation: fadeIn 0.5s; }
+        .tg-btn { color: white; text-decoration: none; font-weight: bold; background: #24A1DE; padding: 12px; border-radius: 8px; display: block; margin-top: 15px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🔐 Access Granted Only</h2>
+    <div id="loginArea">
+        <input type="password" id="passInput" placeholder="পাসওয়ার্ড দিন">
+        <br>
+        <button onclick="checkPass()">Unlock File</button>
+    </div>
+
+    <div id="linkArea">
+        <p style="color: #00ff88;">✅ ভেরিফিকেশন সফল!</p>
+        <p>নিচের বাটনে ক্লিক করে জিপ ফাইলটি নামিয়ে নিন:</p>
+        <a href="https://t.me/TheZipFile2/3" target="_blank" class="tg-btn">📥 Get ZIP from Telegram</a>
+    </div>
+</div>
+
+<script>
+    function checkPass() {
+        const pass = document.getElementById('passInput').value;
+        const correctPass = "706609"; // আপনার দেওয়া পাসওয়ার্ড
+
+        if (pass === correctPass) {
+            document.getElementById('loginArea').style.display = 'none';
+            document.getElementById('linkArea').style.display = 'block';
+        } else {
+            alert("মামা, ভুল পাসওয়ার্ড! সঠিকটা দিন।");
+        }
+    }
+    // এন্টার চাপলে যেন লগইন হয়
+    document.getElementById("passInput").addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            checkPass();
+        }
+    });
+</script>
+
+</body>
+</html>
