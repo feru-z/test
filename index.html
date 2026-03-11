@@ -3,56 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Private Storage Access</title>
+    <title>Private Cloud</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #0f0f0f; color: #ffffff; margin: 0; }
-        .container { background: #1a1a1a; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); text-align: center; width: 320px; border: 1px solid #333; }
-        h2 { color: #0088cc; margin-bottom: 25px; font-size: 22px; }
-        input { padding: 12px; border-radius: 8px; border: 1px solid #444; width: 90%; margin-bottom: 20px; text-align: center; background: #252525; color: white; font-size: 16px; outline: none; }
-        input:focus { border-color: #0088cc; }
-        button { padding: 12px 25px; background: #0088cc; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
-        button:hover { background: #005f99; }
-        #linkArea { display: none; margin-top: 25px; animation: fadeIn 0.5s; }
-        .tg-btn { color: white; text-decoration: none; font-weight: bold; background: #24A1DE; padding: 12px; border-radius: 8px; display: block; margin-top: 15px; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #000; color: #0f0; margin: 0; }
+        .box { background: #111; padding: 30px; border-radius: 10px; border: 1px solid #0f0; text-align: center; }
+        input { padding: 10px; border-radius: 5px; border: 1px solid #0f0; background: #000; color: #0f0; margin-bottom: 20px; outline: none; }
+        button { padding: 10px 20px; background: #0f0; color: #000; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        #linkArea { display: none; }
+        a { color: #0f0; text-decoration: none; border: 1px solid #0f0; padding: 10px; display: inline-block; margin-top: 15px; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>🔐 Access Granted Only</h2>
+<div class="box">
+    <h2>🔐 Terminal Access</h2>
     <div id="loginArea">
-        <input type="password" id="passInput" placeholder="পাসওয়ার্ড দিন">
+        <input type="password" id="p" placeholder="Password">
         <br>
-        <button onclick="checkPass()">Unlock File</button>
+        <button onclick="c()">Unlock</button>
     </div>
-
     <div id="linkArea">
-        <p style="color: #00ff88;">✅ ভেরিফিকেশন সফল!</p>
-        <p>নিচের বাটনে ক্লিক করে জিপ ফাইলটি নামিয়ে নিন:</p>
-        <a href="https://t.me/TheZipFile2/3" target="_blank" class="tg-btn">📥 Get ZIP from Telegram</a>
+        <p>Verified!</p>
+        <a href="https://t.me/TheZipFile2/3" target="_blank">📥 Download ZIP</a>
     </div>
 </div>
 
 <script>
-    function checkPass() {
-        const pass = document.getElementById('passInput').value;
-        const correctPass = "706609"; // আপনার দেওয়া পাসওয়ার্ড
-
-        if (pass === correctPass) {
+    function c() {
+        if (document.getElementById('p').value === "706609") {
             document.getElementById('loginArea').style.display = 'none';
             document.getElementById('linkArea').style.display = 'block';
-        } else {
-            alert("মামা, ভুল পাসওয়ার্ড! সঠিকটা দিন।");
-        }
+        } else { alert("Wrong Password!"); }
     }
-    // এন্টার চাপলে যেন লগইন হয়
-    document.getElementById("passInput").addEventListener("keyup", function(event) {
-        if (event.key === "Enter") {
-            checkPass();
-        }
-    });
 </script>
-
 </body>
 </html>
