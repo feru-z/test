@@ -3,38 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Private Cloud</title>
+    <title>Private Storage</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #000; color: #0f0; margin: 0; }
-        .box { background: #111; padding: 30px; border-radius: 10px; border: 1px solid #0f0; text-align: center; }
-        input { padding: 10px; border-radius: 5px; border: 1px solid #0f0; background: #000; color: #0f0; margin-bottom: 20px; outline: none; }
-        button { padding: 10px 20px; background: #0f0; color: #000; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        #linkArea { display: none; }
-        a { color: #0f0; text-decoration: none; border: 1px solid #0f0; padding: 10px; display: inline-block; margin-top: 15px; }
+        body { font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #0a0a0a; color: #00ff00; margin: 0; }
+        .box { background: #111; padding: 40px; border-radius: 15px; border: 1px solid #00ff00; text-align: center; width: 350px; box-shadow: 0 0 20px rgba(0,255,0,0.2); }
+        h2 { margin-bottom: 25px; font-size: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        input { padding: 12px; border-radius: 8px; border: 1px solid #00ff00; background: #000; color: #00ff00; width: 85%; margin-bottom: 20px; text-align: center; font-size: 16px; outline: none; }
+        button { padding: 12px 25px; background: #00ff00; color: #000; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+        button:hover { background: #00cc00; transform: scale(1.02); }
+        #linkArea { display: none; margin-top: 25px; }
+        .btn-container { display: flex; flex-direction: column; gap: 15px; }
+        .download-btn { color: #000; text-decoration: none; font-weight: bold; background: #00ff00; padding: 12px; border-radius: 8px; display: block; transition: 0.3s; }
+        .tg-btn { color: #fff; text-decoration: none; font-weight: bold; background: #24A1DE; padding: 12px; border-radius: 8px; display: block; transition: 0.3s; }
+        .download-btn:hover, .tg-btn:hover { opacity: 0.8; }
     </style>
 </head>
 <body>
 
 <div class="box">
-    <h2>🔐 Terminal Access</h2>
+    <h2>🔐 Secure Terminal</h2>
     <div id="loginArea">
-        <input type="password" id="p" placeholder="Password">
+        <input type="password" id="passInput" placeholder="Enter PIN">
         <br>
-        <button onclick="c()">Unlock</button>
+        <button onclick="check()">Unlock</button>
     </div>
+
     <div id="linkArea">
-        <p>Verified!</p>
-        <a href="https://t.me/TheZipFile2/3" target="_blank">📥 Download ZIP</a>
+        <p style="color: #fff; margin-bottom: 20px;">✅ Access Granted!</p>
+        <div class="btn-container">
+            <a href="TOTAL_74_SESSIONS_BACKUP.zip" class="download-btn" download>🗄️ Download Backup ZIP</a>
+            
+            <a href="https://t.me/TheZipFile2/3" target="_blank" class="tg-btn">🔘 Join Telegram Channel</a>
+        </div>
     </div>
 </div>
 
 <script>
-    function c() {
-        if (document.getElementById('p').value === "706609") {
+    function check() {
+        const p = document.getElementById('passInput').value;
+        if (p === "706609") {
             document.getElementById('loginArea').style.display = 'none';
             document.getElementById('linkArea').style.display = 'block';
-        } else { alert("Wrong Password!"); }
+        } else {
+            alert("Wrong Password! Try again.");
+        }
     }
+    document.getElementById("passInput").addEventListener("keyup", function(e) {
+        if (e.key === "Enter") check();
+    });
 </script>
+
 </body>
 </html>
